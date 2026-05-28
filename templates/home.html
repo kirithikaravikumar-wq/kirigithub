@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Vaishnav Canteen - Home{% endblock %}
+
+{% block body %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">🍽️ College Canteen Online Ordering</div>
+        <h1>Authentic <span class="highlight">South Indian</span> Cuisine</h1>
+        <p>Skip the queue! Order your favorite dishes online and pick up when ready. Fresh, hot, and delicious food — just a click away.</p>
+        <div class="hero-buttons">
+            <a href="/menu" class="btn btn-primary">🍴 View Menu</a>
+            <a href="/order" class="btn btn-secondary">📝 Place Order</a>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Cards -->
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast Ordering</h3>
+        <p>Place your order in seconds and skip the long canteen queue.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🍳</div>
+        <h3>Freshly Prepared</h3>
+        <p>Every dish is made fresh with authentic South Indian flavors.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🎫</div>
+        <h3>Token System</h3>
+        <p>Get a unique token number and track your order status in real-time.</p>
+    </div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by <span class="footer-accent">Vaishnav Canteen</span> &copy; 2026</p>
+</footer>
+
+{% block scripts %}{% endblock %}
+{% endblock %}

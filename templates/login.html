@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - Vaishnav Canteen{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>Admin <span class="highlight">Login</span></h1>
+    <p>Enter your password to access the dashboard</p>
+</div>
+
+<div class="glass-card" style="max-width:400px;">
+    <h2>🔒 Login</h2>
+    <p class="subtitle">Authorized staff only</p>
+
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter admin password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">🔓 Login</button>
+    </form>
+</div>
+{% endblock %}

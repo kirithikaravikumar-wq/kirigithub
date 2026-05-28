@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Menu - Vaishnav Canteen{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>Our <span class="highlight">Menu</span></h1>
+    <p>Choose from our delicious selection of South Indian dishes</p>
+</div>
+
+<div class="menu-grid">
+    {% for item_name, item_data in menu_items.items() %}
+    <div class="menu-card">
+        <div class="menu-card-img-wrapper">
+            <img src="{{ item_data.image }}" alt="{{ item_name }}" class="menu-card-img" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+            <h3>{{ item_name }}</h3>
+            <div class="menu-card-price">₹{{ item_data.price }}</div>
+            <a href="/order" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">Order Now</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

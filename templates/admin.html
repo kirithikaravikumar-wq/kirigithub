@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - Vaishnav Canteen{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1>📋 Admin Dashboard</h1>
+    <div>
+        <a href="/logout" class="btn btn-secondary btn-sm">🚪 Logout</a>
+    </div>
+</div>
+
+{% if orders %}
+<div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Food Item</th>
+                <th>Qty</th>
+                <th>Total (₹)</th>
+                <th>Token</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order[0] }}</td>
+                <td style="color: var(--text-primary); font-weight: 500;">{{ order[1] }}</td>
+                <td>{{ order[2] }}</td>
+                <td>{{ order[3] }}</td>
+                <td style="font-weight: 600; color: var(--accent);">₹{{ order[4] }}</td>
+                <td style="font-weight: 600;">{{ order[5] }}</td>
+                <td>
+                    {% if order[6] == 'Ready' %}
+                    <span class="status-badge ready">Ready</span>
+                    {% else %}
+                    <span class="status-badge preparing">{{ order[6] }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if order[6] != 'Ready' %}
+                    <a href="/ready/{{ order[0] }}" class="btn btn-green btn-sm">✅ Mark Ready</a>
+                    {% else %}
+                    <button class="btn btn-sm" disabled style="background: rgba(255,255,255,0.05); color: var(--text-muted);">Done</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <div class="icon">📭</div>
+    <p>No orders yet. Orders will appear here when customers place them.</p>
+</div>
+{% endif %}
+{% endblock %}

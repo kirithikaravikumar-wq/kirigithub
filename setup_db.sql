@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS canteen;
+USE canteen;
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    food VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    total INT NOT NULL,
+    token INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'Preparing'
+);

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmed - Vaishnav Canteen{% endblock %}
+
+{% block content %}
+<div class="glass-card bill-card" style="max-width:500px;">
+    <div class="success-icon">✓</div>
+    <h2>Order Confirmed!</h2>
+    <p class="subtitle">Your food is being prepared</p>
+
+    <div class="bill-token">
+        <div class="token-number">{{ order[4] }}</div>
+        <p>Your Token Number</p>
+    </div>
+
+    <div class="bill-details">
+        <div class="bill-row">
+            <span class="label">Name</span>
+            <span class="value">{{ order[0] }}</span>
+        </div>
+        <div class="bill-row">
+            <span class="label">Food Item</span>
+            <span class="value">{{ order[1] }}</span>
+        </div>
+        <div class="bill-row">
+            <span class="label">Quantity</span>
+            <span class="value">{{ order[2] }}</span>
+        </div>
+        <div class="bill-row">
+            <span class="label">Status</span>
+            <span class="value"><span class="status-badge preparing">{{ order[5] }}</span></span>
+        </div>
+        <div class="bill-row total">
+            <span class="label">Total</span>
+            <span class="value">₹{{ order[3] }}</span>
+        </div>
+    </div>
+
+    <div class="bill-actions">
+        <a href="/check_status" class="btn btn-primary">🔍 Check Status</a>
+        <a href="/" class="btn btn-secondary">🏠 Back to Home</a>
+    </div>
+</div>
+{% endblock %}

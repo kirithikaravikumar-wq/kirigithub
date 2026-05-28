@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Place Order - Vaishnav Canteen{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>Place Your <span class="highlight">Order</span></h1>
+    <p>Fill in the details below and we'll get your food ready</p>
+</div>
+
+<div class="glass-card">
+    <h2>📝 Order Form</h2>
+    <p class="subtitle">Select your food and quantity</p>
+
+    <form action="/place_order" method="POST" id="orderForm">
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="food">Food Item</label>
+            <select name="food" id="food" class="form-control" required>
+                {% for item_name, item_data in menu_items.items() %}
+                <option value="{{ item_name }}" data-price="{{ item_data.price }}">{{ item_name }} — ₹{{ item_data.price }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Enter quantity" min="1" max="20" value="1" required>
+        </div>
+
+        <div class="price-display">
+            <div class="price-label">Estimated Total</div>
+            <div class="price-value" id="totalPrice">₹0</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">🛒 Place Order</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const foodSelect = document.getElementById('food');
+    const quantityInput = document.getElementById('quantity');
+    const totalDisplay = document.getElementById('totalPrice');
+
+    function updatePrice() {
+        const selectedOption = foodSelect.options[foodSelect.selectedIndex];
+        const price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+        const qty = parseInt(quantityInput.value) || 0;
+        totalDisplay.textContent = '₹' + (price * qty);
+    }
+
+    foodSelect.addEventListener('change', updatePrice);
+    quantityInput.addEventListener('input', updatePrice);
+
+    // Initialize price on load
+    updatePrice();
+</script>
+{% endblock %}
